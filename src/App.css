@@ -1,0 +1,286 @@
+body, html {
+  background: #000;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.app {
+  min-height: 100vh;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ========== CANDLESTICK BACKGROUND ========== */
+.candles-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.candle {
+  position: absolute;
+  bottom: -300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: riseUp linear infinite;
+  opacity: 0;
+}
+
+.candle-body {
+  width: 14px;
+  background: #00ff88;
+  border-radius: 2px;
+  opacity: 0.35;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3), 0 0 40px rgba(0, 255, 136, 0.1);
+}
+
+.wick {
+  width: 2px;
+  background: #00ff88;
+  opacity: 0.3;
+}
+
+.wick-top {
+  border-radius: 1px 1px 0 0;
+}
+
+.wick-bottom {
+  border-radius: 0 0 1px 1px;
+}
+
+@keyframes riseUp {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-140vh);
+    opacity: 0;
+  }
+}
+
+/* make sure content sits above candles */
+.top-buttons,
+.hero-image,
+.tweet-pile {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== TOP BUTTONS ========== */
+.top-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.twitter-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.2rem;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.twitter-btn:hover {
+  background: #ddd;
+  transform: scale(1.05);
+}
+
+.copy-ca-btn {
+  padding: 0.5rem 1.2rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: #00ff88;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: 'Space Grotesk', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+}
+
+.copy-ca-btn:hover {
+  background: rgba(0, 255, 136, 0.08);
+  border-color: rgba(0, 255, 136, 0.3);
+  transform: scale(1.05);
+}
+
+/* ========== HERO IMAGE ========== */
+.hero-image {
+  width: 420px;
+  max-width: 90vw;
+  height: auto;
+  margin-bottom: 3rem;
+}
+
+/* ========== TWEET PILE ========== */
+.tweet-pile {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 520px;
+}
+
+.tweet-card {
+  position: absolute;
+  width: 260px;
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 0.7rem 0.9rem;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ALL flash at the same time, loop every 3s, 4 groups */
+/* Group 1 */
+.tweet-card:nth-child(1)  { animation: flashPile 12s ease infinite 0s;   top: 0;    left: 2%;    transform: rotate(-2deg); }
+.tweet-card:nth-child(2)  { animation: flashPile 12s ease infinite 0s;   top: 20px;  left: 35%;   transform: rotate(1.5deg); }
+.tweet-card:nth-child(3)  { animation: flashPile 12s ease infinite 0s;   top: 10px;  right: 3%;   transform: rotate(-1deg); }
+.tweet-card:nth-child(4)  { animation: flashPile 12s ease infinite 0s;   top: 160px; left: 8%;    transform: rotate(0.8deg); }
+.tweet-card:nth-child(5)  { animation: flashPile 12s ease infinite 0s;   top: 180px; left: 38%;   transform: rotate(-1.5deg); }
+.tweet-card:nth-child(6)  { animation: flashPile 12s ease infinite 0s;   top: 150px; right: 5%;   transform: rotate(2deg); }
+.tweet-card:nth-child(7)  { animation: flashPile 12s ease infinite 0s;   top: 320px; left: 5%;    transform: rotate(-0.5deg); }
+.tweet-card:nth-child(8)  { animation: flashPile 12s ease infinite 0s;   top: 340px; left: 36%;   transform: rotate(1deg); }
+.tweet-card:nth-child(9)  { animation: flashPile 12s ease infinite 0s;   top: 330px; right: 2%;   transform: rotate(-1.8deg); }
+
+/* Group 2 */
+.tweet-card:nth-child(10) { animation: flashPile 12s ease infinite 3s;   top: 15px;  left: 5%;    transform: rotate(1.2deg); }
+.tweet-card:nth-child(11) { animation: flashPile 12s ease infinite 3s;   top: 5px;   left: 37%;   transform: rotate(-1deg); }
+.tweet-card:nth-child(12) { animation: flashPile 12s ease infinite 3s;   top: 25px;  right: 4%;   transform: rotate(0.5deg); }
+.tweet-card:nth-child(13) { animation: flashPile 12s ease infinite 3s;   top: 170px; left: 3%;    transform: rotate(-1.8deg); }
+.tweet-card:nth-child(14) { animation: flashPile 12s ease infinite 3s;   top: 190px; left: 34%;   transform: rotate(1.3deg); }
+.tweet-card:nth-child(15) { animation: flashPile 12s ease infinite 3s;   top: 165px; right: 6%;   transform: rotate(-0.7deg); }
+.tweet-card:nth-child(16) { animation: flashPile 12s ease infinite 3s;   top: 335px; left: 7%;    transform: rotate(1.5deg); }
+.tweet-card:nth-child(17) { animation: flashPile 12s ease infinite 3s;   top: 325px; left: 40%;   transform: rotate(-2deg); }
+.tweet-card:nth-child(18) { animation: flashPile 12s ease infinite 3s;   top: 345px; right: 3%;   transform: rotate(0.8deg); }
+
+/* Group 3 */
+.tweet-card:nth-child(19) { animation: flashPile 12s ease infinite 6s;   top: 8px;   left: 4%;    transform: rotate(-0.8deg); }
+.tweet-card:nth-child(20) { animation: flashPile 12s ease infinite 6s;   top: 30px;  left: 36%;   transform: rotate(2deg); }
+.tweet-card:nth-child(21) { animation: flashPile 12s ease infinite 6s;   top: 0;     right: 5%;   transform: rotate(-1.5deg); }
+.tweet-card:nth-child(22) { animation: flashPile 12s ease infinite 6s;   top: 175px; left: 6%;    transform: rotate(0.6deg); }
+.tweet-card:nth-child(23) { animation: flashPile 12s ease infinite 6s;   top: 185px; left: 33%;   transform: rotate(-2deg); }
+.tweet-card:nth-child(24) { animation: flashPile 12s ease infinite 6s;   top: 155px; right: 4%;   transform: rotate(1.2deg); }
+.tweet-card:nth-child(25) { animation: flashPile 12s ease infinite 6s;   top: 330px; left: 3%;    transform: rotate(-1.2deg); }
+.tweet-card:nth-child(26) { animation: flashPile 12s ease infinite 6s;   top: 350px; left: 38%;   transform: rotate(0.5deg); }
+.tweet-card:nth-child(27) { animation: flashPile 12s ease infinite 6s;   top: 320px; right: 6%;   transform: rotate(-0.3deg); }
+
+/* Group 4 */
+.tweet-card:nth-child(28) { animation: flashPile 12s ease infinite 9s;   top: 20px;  left: 3%;    transform: rotate(1.8deg); }
+.tweet-card:nth-child(29) { animation: flashPile 12s ease infinite 9s;   top: 10px;  left: 38%;   transform: rotate(-0.5deg); }
+.tweet-card:nth-child(30) { animation: flashPile 12s ease infinite 9s;   top: 15px;  right: 2%;   transform: rotate(1deg); }
+.tweet-card:nth-child(31) { animation: flashPile 12s ease infinite 9s;   top: 180px; left: 5%;    transform: rotate(-1deg); }
+.tweet-card:nth-child(32) { animation: flashPile 12s ease infinite 9s;   top: 195px; left: 35%;   transform: rotate(2deg); }
+.tweet-card:nth-child(33) { animation: flashPile 12s ease infinite 9s;   top: 160px; right: 3%;   transform: rotate(-1.5deg); }
+.tweet-card:nth-child(34) { animation: flashPile 12s ease infinite 9s;   top: 340px; left: 4%;    transform: rotate(0.3deg); }
+.tweet-card:nth-child(35) { animation: flashPile 12s ease infinite 9s;   top: 330px; left: 37%;   transform: rotate(-1.8deg); }
+.tweet-card:nth-child(36) { animation: flashPile 12s ease infinite 9s;   top: 350px; right: 5%;   transform: rotate(1.3deg); }
+
+@keyframes flashPile {
+  0%    { opacity: 0; filter: brightness(1); }
+  0.5%  { opacity: 1; filter: brightness(3); }
+  2%    { opacity: 1; filter: brightness(1); }
+  23%   { opacity: 1; filter: brightness(1); }
+  25%   { opacity: 0; filter: brightness(1); }
+  100%  { opacity: 0; }
+}
+
+/* ========== TWEET INNARDS ========== */
+.tweet-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.35rem;
+}
+
+.tweet-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #1a1a1a;
+  flex-shrink: 0;
+}
+
+.tweet-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.tweet-name {
+  font-weight: 700;
+  font-size: 0.72rem;
+  color: #fff;
+}
+
+.tweet-verified svg {
+  width: 13px;
+  height: 13px;
+  vertical-align: middle;
+}
+
+.tweet-handle {
+  font-size: 0.62rem;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.tweet-x-logo {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.12);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.tweet-body {
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tweet-body .highlight {
+  color: #00ff88;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .tweet-pile {
+    height: 900px;
+  }
+  .tweet-card {
+    width: 220px;
+  }
+  /* stack vertically on mobile */
+  .tweet-card:nth-child(3n+1) { left: 3% !important; right: auto !important; }
+  .tweet-card:nth-child(3n+2) { left: 20% !important; right: auto !important; }
+  .tweet-card:nth-child(3n+3) { left: 10% !important; right: auto !important; }
+}
