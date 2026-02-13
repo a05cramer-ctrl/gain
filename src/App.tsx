@@ -92,7 +92,7 @@ function TweetCard({ tweet }: { tweet: Tweet }) {
 }
 
 function App() {
-  const ca = "BfiXEGXxycDqRJMz8xxo6YPo8rkJkSyP2oQPdAMepump"
+  const ca = "H6YGWJjicGXhkF5oRfT793Cvyd3xp78mfiJv8q3npump"
 
   const copyCA = () => {
     navigator.clipboard.writeText(ca)
